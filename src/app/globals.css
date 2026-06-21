@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -15,465 +15,393 @@
 
 @layer base {
   :root {
-    /* Cyberpunk Design Tokens - Dark Mode (Default) */
-    --cyber-background: #0a0a0f;
-    --cyber-foreground: #e0e0e0;
-    --cyber-card: #12121a;
-    --cyber-muted: #1c1c2e;
-    --cyber-muted-foreground: #6b7280;
-    --cyber-border: #2a2a3a;
-    --cyber-input: #12121a;
-    --cyber-ring: #00ff88;
-    --cyber-destructive: #ff3366;
-    
-    /* Neon Colors */
-    --neon-green: #00ff88;
-    --neon-magenta: #ff00ff;
-    --neon-cyan: #00d4ff;
-    --neon-red: #ff3366;
-    
-    /* Glow Shadows */
-    --shadow-neon: 0 0 5px #00ff88, 0 0 10px #00ff8840;
-    --shadow-neon-sm: 0 0 3px #00ff88, 0 0 6px #00ff8830;
-    --shadow-neon-lg: 0 0 10px #00ff88, 0 0 20px #00ff8860, 0 0 40px #00ff8830;
-    --shadow-neon-secondary: 0 0 5px #ff00ff, 0 0 20px #ff00ff60;
-    --shadow-neon-tertiary: 0 0 5px #00d4ff, 0 0 20px #00d4ff60;
+    /* Design Tokens - aiwizardtool.com */
+    --primary: #185FA5;
+    --primary-light: #E6F1FB;
+    --primary-mid: #378ADD;
+    --accent: #534AB7;
+    --accent-light: #EEEDFE;
+    --success: #0F6E56;
+    --success-light: #E1F5EE;
+    --warning: #BA7517;
+    --warning-light: #FAEEDA;
+    --danger: #D85A30;
+    --danger-light: #FAECE7;
+    --bg-main: #FFFFFF;
+    --bg-secondary: #F7F8FA;
+    --text-primary: #1A1A2E;
+    --text-secondary: #5F5E5A;
+    --text-muted: #888780;
+    --border: #E8E8ED;
+
+    /* Business Blue-White Design Tokens - Light Mode (Default) */
+    --cyber-background: #FFFFFF;
+    --cyber-foreground: #1A1A2E;
+    --cyber-card: #FFFFFF;
+    --cyber-muted: #F7F8FA;
+    --cyber-muted-foreground: #5F5E5A;
+    --cyber-border: #E8E8ED;
+    --cyber-input: #FFFFFF;
+    --cyber-ring: #185FA5;
+    --cyber-destructive: #D85A30;
+
+    /* Brand Colors (保留 --neon-* 命名以兼容现有代码) */
+    --neon-green: #185FA5;   /* Primary 哥飞蓝 */
+    --neon-magenta: #534AB7; /* Accent 紫色 */
+    --neon-cyan: #378ADD;    /* Primary 中 */
+    --neon-yellow: #BA7517;  /* Warning */
+    --neon-red: #D85A30;     /* Danger */
+
+    /* 阴影（替换霓虹发光为柔和阴影） */
+    --shadow-neon: 0 1px 3px rgba(24, 95, 165, 0.08), 0 1px 2px rgba(24, 95, 165, 0.04);
+    --shadow-neon-sm: 0 1px 2px rgba(24, 95, 165, 0.06);
+    --shadow-neon-lg: 0 4px 12px rgba(24, 95, 165, 0.10), 0 2px 4px rgba(24, 95, 165, 0.06);
+    --shadow-neon-secondary: 0 1px 3px rgba(83, 74, 183, 0.10), 0 1px 2px rgba(83, 74, 183, 0.06);
+    --shadow-neon-tertiary: 0 1px 3px rgba(55, 138, 221, 0.10), 0 1px 2px rgba(55, 138, 221, 0.06);
   }
-  
+
   * {
     @apply border-cyber-border;
   }
-  
-  /* Prevent white flash on page load */
+
   html {
-    background-color: #0a0a0f;
+    background-color: #FFFFFF;
   }
-  
+
   body {
-    @apply antialiased text-cyber-foreground font-mono;
-    background-color: #0a0a0f;
+    @apply antialiased text-cyber-foreground font-sans;
+    background-color: #FFFFFF;
+    color: #1A1A2E;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
-  
-  /* Light Mode Variables - Darker & Softer */
+
+  /* 暗色模式变量 - 改为更柔和的暗色（保留主题切换功能） */
   html.light-mode {
-    --cyber-background: #1a1d29;
-    --cyber-foreground: #e4e6eb;
-    --cyber-card: #242838;
-    --cyber-muted: #2d3142;
-    --cyber-muted-foreground: #8b92a8;
-    --cyber-border: #3d4252;
-    --cyber-input: #242838;
-    --cyber-ring: #00d4aa;
-    --cyber-destructive: #ff5a6a;
-    
-    /* Neon Colors for Dark-Soft Mode */
-    --neon-green: #00d4aa;
-    --neon-magenta: #ff6b9d;
-    --neon-cyan: #4facfe;
-    --neon-red: #ff5a6a;
-    
-    /* Glow Shadows for Dark-Soft */
-    --shadow-neon: 0 0 5px #00d4aa, 0 0 10px #00d4aa40;
-    --shadow-neon-sm: 0 0 3px #00d4aa, 0 0 6px #00d4aa30;
-    --shadow-neon-lg: 0 0 10px #00d4aa, 0 0 20px #00d4aa60, 0 0 40px #00d4aa30;
-    --shadow-neon-secondary: 0 0 5px #ff6b9d, 0 0 20px #ff6b9d60;
-    --shadow-neon-tertiary: 0 0 5px #4facfe, 0 0 20px #4facfe60;
+    --cyber-background: #1A1A2E;
+    --cyber-foreground: #E8E8ED;
+    --cyber-card: #242442;
+    --cyber-muted: #2A2A4A;
+    --cyber-muted-foreground: #A8A8B8;
+    --cyber-border: #3A3A5C;
+    --cyber-input: #242442;
+    --cyber-ring: #378ADD;
+    --cyber-destructive: #E07A55;
+
+    --neon-green: #378ADD;
+    --neon-magenta: #8B85D6;
+    --neon-cyan: #5BA8E8;
+    --neon-yellow: #D49B45;
+    --neon-red: #E07A55;
+
+    --shadow-neon: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-neon-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-neon-lg: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-neon-secondary: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-neon-tertiary: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
   }
-  
-  /* Smooth theme transition */
+
   html.light-mode body {
     background-color: var(--cyber-background);
+    color: var(--cyber-foreground);
   }
-  
-  /* Show/hide elements based on theme */
+
+  /* 主题切换显示控制（保留原逻辑，但默认 light-only 隐藏，dark-only 显示，因为默认就是白底） */
   .dark-only {
-    display: block;
+    display: none;
   }
-  
+
   .light-only {
-    display: none;
-  }
-  
-  html.light-mode .dark-only {
-    display: none;
-  }
-  
-  html.light-mode .light-only {
     display: block;
   }
-  
-  /* Scrollbar Styling */
+
+  html.light-mode .dark-only {
+    display: block;
+  }
+
+  html.light-mode .light-only {
+    display: none;
+  }
+
+  /* Scrollbar Styling - 商业风格 */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
-    background: var(--cyber-background);
+    background: #F7F8FA;
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    background: var(--cyber-border);
+    background: #E8E8ED;
     border-radius: 4px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--neon-green);
-    box-shadow: var(--shadow-neon);
+    background: #185FA5;
   }
-  
-  /* Light mode scrollbar adjustments */
+
+  /* 暗色模式 scrollbar */
+  html.light-mode ::-webkit-scrollbar-track {
+    background: var(--cyber-muted);
+  }
+
   html.light-mode ::-webkit-scrollbar-thumb {
-    background: #adb5bd;
+    background: #4A4A6A;
   }
-  
+
   html.light-mode ::-webkit-scrollbar-thumb:hover {
     background: var(--neon-green);
   }
 }
 
 @layer components {
-  /* Cyberpunk Button Variants */
+  /* 商业风格按钮 - 主色蓝 */
   .btn-cyber {
-    @apply relative px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider 
-           border-2 border-neon-green text-neon-green bg-transparent
+    @apply relative px-6 py-3 font-sans text-sm font-semibold rounded-md
+           border border-[#185FA5] text-[#185FA5] bg-white
            transition-all duration-200
-           hover:bg-neon-green hover:text-cyber-background hover:shadow-neon;
+           hover:bg-[#185FA5] hover:text-white hover:shadow-md;
   }
 
-  /* 霓虹发光按钮 - 圆角矩形版 */
+  /* 主色填充按钮 - 圆角版 */
   .btn-cyber-glow {
-    @apply relative px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider 
-           border border-neon-green text-neon-green bg-neon-green/10
-           transition-all duration-200 rounded-md
-           hover:bg-neon-green hover:text-cyber-background
-           shadow-[0_0_6px_rgba(0,255,136,0.4)] 
-           hover:shadow-[0_0_12px_rgba(0,255,136,0.6)];
+    @apply relative px-6 py-3 font-sans text-sm font-semibold rounded-md
+           border border-[#185FA5] text-white bg-[#185FA5]
+           transition-all duration-200
+           hover:bg-[#134a82] hover:border-[#134a82]
+           shadow-sm hover:shadow-md;
   }
 
-  /* 霓虹发光按钮 - 洋红版 */
+  /* 紫色强调按钮 */
   .btn-cyber-glow-magenta {
-    @apply relative px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider 
-           border border-neon-magenta text-neon-magenta bg-neon-magenta/10
-           transition-all duration-200 rounded-md
-           hover:bg-neon-magenta hover:text-cyber-background
-           shadow-[0_0_6px_rgba(255,0,255,0.4)] 
-           hover:shadow-[0_0_12px_rgba(255,0,255,0.6)];
+    @apply relative px-6 py-3 font-sans text-sm font-semibold rounded-md
+           border border-[#534AB7] text-white bg-[#534AB7]
+           transition-all duration-200
+           hover:bg-[#443c9a] hover:border-[#443c9a]
+           shadow-sm hover:shadow-md;
   }
 
-  /* 霓虹轮廓按钮 - 圆角矩形版（青色） */
+  /* 描边按钮 - 中蓝色 */
   .btn-cyber-outline-neon {
-    @apply relative px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider 
-           border border-neon-cyan text-neon-cyan bg-transparent
-           transition-all duration-200 rounded-md
-           hover:bg-neon-cyan/10
-           hover:shadow-[0_0_8px_rgba(0,212,255,0.4)];
+    @apply relative px-6 py-3 font-sans text-sm font-semibold rounded-md
+           border border-[#378ADD] text-[#378ADD] bg-white
+           transition-all duration-200
+           hover:bg-[#E6F1FB] hover:border-[#378ADD]
+           shadow-sm;
   }
 
-  /* 按钮四角装饰（使用伪元素） */
+  /* 移除按钮四角装饰（伪元素置空） */
   .btn-cyber::before,
   .btn-cyber::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-color: #00ff88;
-    border-style: solid;
-    border-width: 0;
-    transition: all 0.2s;
-  }
-  .btn-cyber::before {
-    top: -1px;
-    left: -1px;
-    border-top-width: 2px;
-    border-left-width: 2px;
-  }
-  .btn-cyber::after {
-    bottom: -1px;
-    right: -1px;
-    border-bottom-width: 2px;
-    border-right-width: 2px;
-  }
-  .btn-cyber:hover::before,
-  .btn-cyber:hover::after {
-    width: 12px;
-    height: 12px;
+    content: none;
   }
 
   .btn-cyber-secondary {
-    @apply relative px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider 
-           border-2 border-neon-magenta text-neon-magenta bg-transparent
+    @apply relative px-6 py-3 font-sans text-sm font-semibold rounded-md
+           border border-[#534AB7] text-[#534AB7] bg-white
            transition-all duration-200
-           hover:bg-neon-magenta hover:text-cyber-background hover:shadow-neon-secondary;
+           hover:bg-[#534AB7] hover:text-white hover:shadow-md;
   }
-  
+
   .btn-cyber-outline {
-    @apply relative px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider 
-           border border-cyber-border text-cyber-foreground bg-transparent
+    @apply relative px-6 py-3 font-sans text-sm font-semibold rounded-md
+           border border-[#E8E8ED] text-[#1A1A2E] bg-white
            transition-all duration-200
-           hover:border-neon-green hover:text-neon-green hover:shadow-neon;
+           hover:border-[#185FA5] hover:text-[#185FA5] hover:shadow-sm;
   }
   .btn-cyber-outline::before,
   .btn-cyber-outline::after {
-    content: '';
-    position: absolute;
-    width: 7px;
-    height: 7px;
-    border-color: #2a2a3a;
-    border-style: solid;
-    border-width: 0;
-    transition: all 0.2s;
+    content: none;
   }
-  .btn-cyber-outline::before {
-    top: -1px;
-    left: -1px;
-    border-top-width: 2px;
-    border-left-width: 2px;
-  }
-  .btn-cyber-outline::after {
-    bottom: -1px;
-    right: -1px;
-    border-bottom-width: 2px;
-    border-right-width: 2px;
-  }
-  .btn-cyber-outline:hover::before,
-  .btn-cyber-outline:hover::after {
-    border-color: #00ff88;
-  }
-  
+
   .btn-cyber-ghost {
-    @apply relative px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider 
-           text-cyber-foreground bg-transparent
+    @apply relative px-6 py-3 font-sans text-sm font-semibold rounded-md
+           text-[#1A1A2E] bg-transparent
            transition-all duration-200
-           hover:bg-neon-green/10 hover:text-neon-green;
+           hover:bg-[#E6F1FB] hover:text-[#185FA5];
   }
-  
+
   .btn-cyber-glitch {
-    @apply relative px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider 
-           bg-neon-green text-cyber-background
+    @apply relative px-6 py-3 font-sans text-sm font-semibold rounded-md
+           bg-[#185FA5] text-white
            transition-all duration-200
-           hover:brightness-110;
+           hover:bg-[#134a82];
   }
-  
-  /* Cyberpunk Card Variants */
+
+  /* 商业风格卡片 */
   .card-cyber {
-    @apply relative bg-cyber-card border border-cyber-border
+    @apply relative bg-white border border-[#E8E8ED] rounded-lg
            transition-all duration-300
-           hover:-translate-y-1 hover:border-neon-green hover:shadow-neon;
+           hover:-translate-y-0.5 hover:border-[#185FA5]/30 hover:shadow-card-hover;
   }
-  
+
   .card-cyber-terminal {
-    @apply relative bg-cyber-background border border-cyber-border
-           overflow-hidden;
+    @apply relative bg-white border border-[#E8E8ED] rounded-lg overflow-hidden;
   }
-  
+
   .card-cyber-terminal::before {
     content: '';
-    @apply absolute top-0 left-0 right-0 h-8 bg-cyber-muted border-b border-cyber-border;
+    @apply absolute top-0 left-0 right-0 h-8 bg-[#F7F8FA] border-b border-[#E8E8ED];
   }
-  
+
   .card-cyber-holographic {
-    @apply relative bg-cyber-muted/30 border border-neon-green/30
-           backdrop-blur-sm shadow-neon;
+    @apply relative bg-[#F7F8FA] border border-[#185FA5]/20 rounded-lg backdrop-blur-sm shadow-card;
   }
-  
-  /* Cyberpunk Input */
+
+  /* 商业风格输入框 */
   .input-cyber {
-    @apply relative w-full bg-cyber-input border border-cyber-border 
-           text-neon-green font-mono text-sm
+    @apply relative w-full bg-white border border-[#E8E8ED] rounded-md
+           text-[#1A1A2E] font-sans text-sm
            px-4 py-3 pl-10
-           placeholder:text-cyber-muted-foreground
-           focus:border-neon-green focus:shadow-neon focus:outline-none
+           placeholder:text-[#888780]
+           focus:border-[#185FA5] focus:ring-2 focus:ring-[#185FA5]/20 focus:outline-none
            transition-all duration-200;
   }
-  
+
   .input-cyber-prefix::before {
-    content: '>';
-    @apply absolute left-3 top-1/2 -translate-y-1/2 text-neon-green font-mono;
+    content: '';
+    @apply absolute left-3 top-1/2 -translate-y-1/2 text-[#185FA5];
   }
-  
-  /* Glitch Text Effect */
+
+  /* 移除 Glitch Text Effect（保留类名以兼容，但无效果） */
   .glitch-text {
     @apply relative inline-block;
   }
-  
+
   .glitch-text::before,
   .glitch-text::after {
-    content: attr(data-text);
-    @apply absolute top-0 left-0 w-full h-full;
-  }
-  
-  .glitch-text::before {
-    @apply text-neon-magenta;
-    animation: glitch-1 0.3s infinite linear alternate-reverse;
-    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-  }
-  
-  .glitch-text::after {
-    @apply text-neon-cyan;
-    animation: glitch-2 0.3s infinite linear alternate-reverse;
-    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-  }
-  
-  /* Scanline Overlay */
-  .scanlines {
-    @apply pointer-events-none fixed inset-0 z-50;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.3) 2px,
-      rgba(0, 0, 0, 0.3) 4px
-    );
+    content: none;
   }
 
-  /* 在管理后台页面隐藏扫描线，避免干扰亮色背景的可读性 */
+  /* 移除 Scanline Overlay（保留类名但不可见） */
+  .scanlines {
+    @apply pointer-events-none fixed inset-0 z-0;
+    background: none;
+    display: none;
+  }
+
   body:has(.admin-page-root) .scanlines {
     display: none;
   }
-  
-  /* Grid Background Pattern */
+
+  /* 移除 Grid Background Pattern（保留类名但不可见） */
   .grid-pattern {
-    background-image:
-      linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
+    background-image: none;
   }
-  
-  /* Circuit Pattern Background */
+
+  /* 移除 Circuit Pattern Background */
   .circuit-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10h30v30h-30z' fill='none' stroke='rgba(0,255,136,0.05)' stroke-width='1'/%3E%3Cpath d='M50 10h40v10h-40z' fill='none' stroke='rgba(0,255,136,0.05)' stroke-width='1'/%3E%3Cpath d='M10 50h10v40h-10z' fill='none' stroke='rgba(0,255,136,0.05)' stroke-width='1'/%3E%3Ccircle cx='25' cy='25' r='2' fill='rgba(0,255,136,0.1)'/%3E%3Ccircle cx='55' cy='15' r='2' fill='rgba(0,255,136,0.1)'/%3E%3Ccircle cx='15' cy='55' r='2' fill='rgba(0,255,136,0.1)'/%3E%3C/svg%3E");
+    background-image: none;
   }
-  
-  /* Neon Glow Utilities */
+
+  /* 移除 Neon Glow Utilities（保留类名但改为普通阴影） */
   .glow-green {
-    box-shadow: 0 0 5px #00ff88, 0 0 10px #00ff8840;
+    box-shadow: 0 0 0 1px rgba(24, 95, 165, 0.20);
   }
-  
+
   .glow-magenta {
-    box-shadow: 0 0 5px #ff00ff, 0 0 20px #ff00ff60;
+    box-shadow: 0 0 0 1px rgba(83, 74, 183, 0.20);
   }
-  
+
   .glow-cyan {
-    box-shadow: 0 0 5px #00d4ff, 0 0 20px #00d4ff60;
+    box-shadow: 0 0 0 1px rgba(55, 138, 221, 0.20);
   }
-  
-  /* Terminal Text Style */
+
+  /* Terminal Text Style - 改为普通文本 */
   .terminal-text {
-    @apply font-mono text-sm;
+    @apply font-sans text-sm text-[#1A1A2E];
   }
-  
+
   .terminal-text::before {
-    content: '>';
-    @apply text-neon-green mr-2;
+    content: '';
+    @apply mr-0;
   }
-  
-  /* Status Indicators */
+
+  /* Status Indicators - 商业风格 */
   .status-dot {
     @apply w-2 h-2 rounded-full;
   }
-  
+
   .status-dot-online {
-    @apply bg-neon-green glow-green;
+    @apply bg-[#0F6E56];
   }
-  
+
   .status-dot-busy {
-    @apply bg-neon-magenta glow-magenta;
+    @apply bg-[#534AB7];
   }
-  
+
   .status-dot-offline {
-    @apply bg-cyber-muted-foreground;
+    @apply bg-[#888780];
   }
-  
-  /* Corner Accents for Holographic Cards */
+
+  /* Corner Accents - 移除角落装饰（保留类名，但无效果） */
   .corner-accent {
-    @apply absolute w-4 h-4 border-2;
+    @apply absolute w-0 h-0 border-0;
   }
-  
-  .corner-accent-tl {
-    @apply corner-accent top-0 left-0 border-r-0 border-b-0 border-neon-green;
-  }
-  
-  .corner-accent-tr {
-    @apply corner-accent top-0 right-0 border-l-0 border-b-0 border-neon-green;
-  }
-  
-  .corner-accent-bl {
-    @apply corner-accent bottom-0 left-0 border-r-0 border-t-0 border-neon-green;
-  }
-  
+
+  .corner-accent-tl,
+  .corner-accent-tr,
+  .corner-accent-bl,
   .corner-accent-br {
-    @apply corner-accent bottom-0 right-0 border-l-0 border-t-0 border-neon-green;
+    @apply border-0;
   }
 }
 
 @layer utilities {
-  /* Animation Keyframes */
+  /* 保留 blink 动画（用于打字光标） */
   @keyframes glitch-1 {
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(2px, -2px); }
-    60% { transform: translate(-1px, -1px); }
-    80% { transform: translate(1px, 1px); }
-    100% { transform: translate(0); }
+    0%, 100% { transform: translate(0); }
   }
-  
+
   @keyframes glitch-2 {
-    0% { transform: translate(0); }
-    20% { transform: translate(2px, -2px); }
-    40% { transform: translate(-2px, 2px); }
-    60% { transform: translate(1px, 1px); }
-    80% { transform: translate(-1px, -1px); }
-    100% { transform: translate(0); }
+    0%, 100% { transform: translate(0); }
   }
-  
-  /* Scanline animation for buttons */
+
+  /* 移除 Scanline animation */
   @keyframes scanline {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
+    0%, 100% { transform: translateY(0); }
   }
-  
+
   .animate-scanline {
-    animation: scanline 2s linear infinite;
+    animation: none;
   }
-  
-  /* Glitch line animation */
+
+  /* 移除 Glitch line animation */
   @keyframes glitch-line {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0%, 100% { transform: translateX(0); }
   }
-  
+
   .animate-glitch-line {
-    animation: glitch-line 0.5s ease-out;
+    animation: none;
   }
-  
-  /* Text Gradient */
+
+  /* 文字渐变 - 改为蓝色渐变 */
   .text-gradient-neon {
-    @apply bg-gradient-to-r from-neon-green via-neon-cyan to-neon-magenta bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[#185FA5] via-[#378ADD] to-[#534AB7] bg-clip-text text-transparent;
   }
-  
-  /* Border Gradient */
+
+  /* Border Gradient - 改为蓝色渐变 */
   .border-gradient-neon {
-    border-image: linear-gradient(135deg, #00ff88, #00d4ff, #ff00ff) 1;
+    border-image: linear-gradient(135deg, #185FA5, #378ADD, #534AB7) 1;
   }
-  
-  /* Backdrop blur for glass effect */
+
+  /* Backdrop blur for glass effect - 商业风格 */
   .glass {
-    @apply backdrop-blur-md bg-cyber-card/50;
+    @apply backdrop-blur-md bg-white/80;
   }
 }
 
-/* Selection Color */
+/* Selection Color - 蓝色高亮 */
 ::selection {
-  background: rgba(0, 255, 136, 0.3);
-  color: #e0e0e0;
+  background: rgba(24, 95, 165, 0.20);
+  color: #1A1A2E;
 }
 
-/* Focus Visible Styles */
+/* Focus Visible Styles - 蓝色聚焦环 */
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #0a0a0f, 0 0 0 4px #00ff88;
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #185FA5;
 }
 
 /* Reduced Motion */

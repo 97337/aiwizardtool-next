@@ -16,7 +16,7 @@ interface UserData {
   avatarUrl?: string | null
 }
 
-// 赛博朋克风格主题切换按钮 - 小巧精致版
+// 主题切换按钮 - 商业风格简洁版
 function ThemeToggle() {
   const [isDark, setIsDark] = useState(true)
   const [mounted, setMounted] = useState(false)
@@ -42,101 +42,46 @@ function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-7 h-7 bg-cyber-card border border-cyber-border/50" 
-        style={{ clipPath: 'polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px)' }} 
-      />
+      <div className="w-8 h-8 bg-white border border-[#E8E8ED] rounded-md" />
     )
   }
 
   return (
     <button
       onClick={toggleTheme}
-      className="relative group w-7 h-7 flex items-center justify-center overflow-hidden transition-all duration-300 hover:scale-105"
-      style={{
-        clipPath: 'polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px)'
-      }}
-      aria-label={isDark ? '切换到白昼模式' : '切换到黑夜模式'}
+      className="relative group w-8 h-8 flex items-center justify-center rounded-md border border-[#E8E8ED] bg-white hover:border-[#185FA5] transition-all duration-200"
+      aria-label={isDark ? 'Switch to dark mode' : 'Switch to light mode'}
     >
-      {/* 背景层 */}
-      <span className={`absolute inset-0 transition-all duration-300 ${
-        isDark 
-          ? 'bg-cyber-card group-hover:bg-cyber-muted' 
-          : 'bg-neon-cyan/10 group-hover:bg-neon-cyan/20'
-      }`} />
-      
-      {/* 边框 */}
-      <span className={`absolute inset-0 transition-all duration-300 ${
-        isDark 
-          ? 'shadow-[inset_0_0_0_1px_rgba(0,212,255,0.4)] group-hover:shadow-[inset_0_0_0_1px_rgba(0,212,255,0.7),0_0_8px_rgba(0,212,255,0.3)]' 
-          : 'shadow-[inset_0_0_0_1px_rgba(0,212,170,0.5)] group-hover:shadow-[inset_0_0_0_1px_rgba(0,212,170,0.8),0_0_8px_rgba(0,212,170,0.4)]'
-      }`} />
-      
-      {/* 小角落装饰 */}
-      <span className={`absolute top-0 left-0 w-1.5 h-1.5 border-t border-l transition-colors duration-300 ${
-        isDark ? 'border-neon-cyan/60' : 'border-neon-green/60'
-      }`} />
-      <span className={`absolute top-0 right-0 w-1.5 h-1.5 border-t border-r transition-colors duration-300 ${
-        isDark ? 'border-neon-cyan/60' : 'border-neon-green/60'
-      }`} />
-      <span className={`absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r transition-colors duration-300 ${
-        isDark ? 'border-neon-cyan/60' : 'border-neon-green/60'
-      }`} />
-      <span className={`absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l transition-colors duration-300 ${
-        isDark ? 'border-neon-cyan/60' : 'border-neon-green/60'
-      }`} />
-      
-      {/* 图标切换动画 */}
-      <div className="relative w-3.5 h-3.5">
-        {/* 太阳图标 - 白昼模式 */}
-        <Sun 
-          className={`absolute inset-0 w-3.5 h-3.5 transition-all duration-300 ${
-            isDark 
-              ? 'opacity-0 rotate-90 scale-50 text-neon-green' 
-              : 'opacity-100 rotate-0 scale-100 text-neon-green'
+      <div className="relative w-4 h-4">
+        <Sun
+          className={`absolute inset-0 w-4 h-4 transition-all duration-300 ${
+            isDark
+              ? 'opacity-0 rotate-90 scale-50 text-[#185FA5]'
+              : 'opacity-100 rotate-0 scale-100 text-[#BA7517]'
           }`}
-          style={{
-            filter: isDark ? 'none' : 'drop-shadow(0 0 4px rgba(0,212,170,0.5))'
-          }}
         />
-        {/* 月亮图标 - 黑夜模式 */}
-        <Moon 
-          className={`absolute inset-0 w-3.5 h-3.5 transition-all duration-300 ${
-            isDark 
-              ? 'opacity-100 rotate-0 scale-100 text-neon-cyan' 
-              : 'opacity-0 -rotate-90 scale-50 text-neon-cyan'
+        <Moon
+          className={`absolute inset-0 w-4 h-4 transition-all duration-300 ${
+            isDark
+              ? 'opacity-100 rotate-0 scale-100 text-[#185FA5]'
+              : 'opacity-0 -rotate-90 scale-50 text-[#185FA5]'
           }`}
-          style={{
-            filter: isDark ? 'drop-shadow(0 0 4px rgba(0,212,255,0.5))' : 'none'
-          }}
         />
       </div>
     </button>
   )
 }
 
-// Glitch Logo Component
+// Logo Component - 商业风格简洁版
 function GlitchLogo() {
   return (
-    <div className="relative group">
-      <div className="flex items-center gap-2">
-        <div className="relative">
-          <BrainCircuit className="w-8 h-8 text-neon-green" />
-          {/* Glitch effect layers */}
-          <div className="absolute inset-0 w-8 h-8 text-neon-magenta opacity-0 group-hover:opacity-70 group-hover:translate-x-[2px] transition-all duration-100">
-            <BrainCircuit className="w-8 h-8" />
-          </div>
-          <div className="absolute inset-0 w-8 h-8 text-neon-cyan opacity-0 group-hover:opacity-70 group-hover:-translate-x-[2px] transition-all duration-100">
-            <BrainCircuit className="w-8 h-8" />
-          </div>
-        </div>
-        <span className="text-xl font-orbitron font-black text-cyber-foreground tracking-wider">
-          <span className="text-neon-green">AI</span>
-          <span className="relative">
-            HUB
-            <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-neon-green via-neon-cyan to-neon-magenta" />
-          </span>
-        </span>
+    <div className="flex items-center gap-2">
+      <div className="w-8 h-8 rounded-md bg-[#185FA5] flex items-center justify-center text-white font-bold text-sm">
+        AI
       </div>
+      <span className="text-lg font-sans font-bold text-[#1A1A2E] tracking-tight">
+        AI Wizard Tool
+      </span>
     </div>
   )
 }

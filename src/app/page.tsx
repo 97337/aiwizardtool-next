@@ -32,61 +32,42 @@ export async function generateMetadata() {
     prisma.tool.count({ where: { isActive: true, isOpenSource: true } }),
   ])
   return {
-    title: `AI Hub - 全球AI工具聚合平台 | 发现${totalTools}+实用AI工具`,
-    description: `AI Hub收录${totalTools}+个AI工具（含${totalOpensource}+开源），涵盖聊天对话、图像生成、视频生成、代码助手等16个分类。每日更新最新AI资讯和开源项目，一站式发现全球AI工具。`,
+    title: `AI Wizard Tool - Discover & Compare AI Coding Tools | ${totalTools}+ Tools`,
+    description: `AI Wizard Tool features ${totalTools}+ AI coding tools (including ${totalOpensource}+ open source), covering AI code assistants, MCP servers, AI IDEs and more. Compare features and prices to find the right tool for your vibe coding workflow.`,
     openGraph: {
-      title: `AI Hub - 全球AI工具聚合平台 | ${totalTools}+AI工具`,
-      description: `AI Hub收录${totalTools}+个AI工具（含${totalOpensource}+开源），涵盖聊天对话、图像生成、视频生成、代码助手等16个分类，每日更新最新AI资讯和开源项目，一站式发现全球AI工具。`,
+      title: `AI Wizard Tool - Discover & Compare AI Coding Tools | ${totalTools}+ Tools`,
+      description: `AI Wizard Tool features ${totalTools}+ AI coding tools (including ${totalOpensource}+ open source). Compare features and prices to find the right tool for your vibe coding workflow.`,
     },
   }
 }
 
-// Glitch Heading Component
+// Hero Heading Component - 商业风格，无 glitch 特效
 function GlitchHeading({ text, className = '' }: { text: string; className?: string }) {
   return (
-    <h1 
-      className={`relative font-orbitron font-black uppercase tracking-wider ${className}`}
-      data-text={text}
+    <h1
+      className={`relative font-sans font-extrabold tracking-tight ${className}`}
     >
       <span className="relative z-10">{text}</span>
-      <span 
-        className="absolute top-0 left-0 -z-10 text-neon-magenta opacity-70"
-        style={{ clipPath: 'polygon(0 0, 100% 0, 100% 45%, 0 45%)', transform: 'translateX(-2px)' }}
-      >
-        {text}
-      </span>
-      <span 
-        className="absolute top-0 left-0 -z-10 text-neon-cyan opacity-70"
-        style={{ clipPath: 'polygon(0 55%, 100% 55%, 100% 100%, 0 100%)', transform: 'translateX(2px)' }}
-      >
-        {text}
-      </span>
     </h1>
   )
 }
 
-// Neon Stat Card
+// Stat Card - 商业风格
 function StatCard({ value, label, icon: Icon, color }: { value: string; label: string; icon: any; color: string }) {
   const colorMap: Record<string, string> = {
-    green: 'border-neon-green text-neon-green shadow-neon',
-    cyan: 'border-neon-cyan text-neon-cyan shadow-neon-tertiary',
-    magenta: 'border-neon-magenta text-neon-magenta shadow-neon-secondary',
-    yellow: 'border-neon-yellow text-neon-yellow shadow-neon-yellow',
+    green: 'border-[#185FA5] text-[#185FA5]',
+    cyan: 'border-[#378ADD] text-[#378ADD]',
+    magenta: 'border-[#534AB7] text-[#534AB7]',
+    yellow: 'border-[#BA7517] text-[#BA7517]',
   }
-  
+
   return (
-    <div className={`relative p-6 border ${colorMap[color]} bg-cyber-card/50 backdrop-blur-sm group hover:-translate-y-1 transition-transform duration-300`}>  
+    <div className={`relative p-6 border rounded-lg ${colorMap[color]} bg-white group hover:-translate-y-0.5 transition-transform duration-300 shadow-card hover:shadow-card-hover`}>
       <div className="flex items-center gap-3 mb-2">
-        <Icon className={`w-5 h-5 ${color === 'green' ? 'text-neon-green' : color === 'cyan' ? 'text-neon-cyan' : color === 'magenta' ? 'text-neon-magenta' : 'text-neon-yellow'}`} />
-        <span className="text-3xl font-orbitron font-black text-cyber-foreground">{value}</span>
+        <Icon className={`w-5 h-5 ${color === 'green' ? 'text-[#185FA5]' : color === 'cyan' ? 'text-[#378ADD]' : color === 'magenta' ? 'text-[#534AB7]' : 'text-[#BA7517]'}`} />
+        <span className="text-3xl font-sans font-extrabold text-[#1A1A2E]">{value}</span>
       </div>
-      <span className="text-sm text-cyber-muted-foreground font-mono uppercase tracking-wider">{label}</span>
-      
-      {/* Corner Accents */}
-      <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-current opacity-50" />
-      <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-current opacity-50" />
-      <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-current opacity-50" />
-      <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-current opacity-50" />
+      <span className="text-sm text-[#5F5E5A] font-sans">{label}</span>
     </div>
   )
 }
@@ -208,61 +189,57 @@ export default async function HomePage() {
       
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-b from-cyber-background via-cyber-muted/20 to-cyber-background" />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse at 50% 0%, rgba(0, 255, 136, 0.1) 0%, transparent 50%)'
-        }} />
-        
+        {/* Background Effects - 商业风格柔和渐变 */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#E6F1FB] via-white to-white" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 relative">
           <div className="text-center max-w-4xl mx-auto">
-            {/* Terminal Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 border border-neon-green/50 bg-neon-green/5 mb-8">
-              <Radio className="w-4 h-4 text-neon-green animate-pulse" />
-              <span className="text-sm font-mono text-neon-green uppercase tracking-wider">
-                已收录 {totalTools}+ AI工具
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 border border-[#185FA5]/30 bg-[#E6F1FB] rounded-md mb-8">
+              <Radio className="w-4 h-4 text-[#185FA5]" />
+              <span className="text-sm font-sans text-[#185FA5] font-medium">
+                {totalTools}+ AI Coding Tools Indexed
               </span>
             </div>
-            
-            {/* Glitch Title */}
-            <GlitchHeading 
-              text="发现全球最新AI工具" 
-              className="text-4xl md:text-6xl lg:text-7xl mb-6 text-cyber-foreground"
+
+            {/* Hero Title */}
+            <GlitchHeading
+              text="Discover & Compare AI Coding Tools"
+              className="text-4xl md:text-6xl lg:text-7xl mb-6 text-[#1A1A2E]"
             />
-            
-            {/* Subtitle with typing effect style */}
-            <p className="text-lg md:text-xl text-cyber-muted-foreground mb-8 font-mono max-w-2xl mx-auto">
-              <span className="text-neon-green">{'>'}</span> 聚合全球AI软件、开源项目和最新资讯
-              <span className="inline-block w-3 h-5 bg-neon-green ml-1 animate-blink" />
+
+            {/* Subtitle */}
+            <p className="text-lg md:text-xl text-[#5F5E5A] mb-8 font-sans max-w-2xl mx-auto">
+              Find the best AI coding tools, compare features, prices, and choose the right one for your vibe coding workflow.
             </p>
-            
+
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/tools"
                 className="btn-cyber-glow inline-flex items-center justify-center gap-2 text-base md:text-lg px-8 py-4"
               >
-                浏览工具
+                Browse Tools
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/news"
                 className="btn-cyber-outline-neon inline-flex items-center justify-center gap-2 text-base md:text-lg px-8 py-4"
               >
-                最新资讯
+                Latest News
               </Link>
             </div>
           </div>
         </div>
-        
+
         {/* Stats Section */}
-        <div className="border-t border-cyber-border">
+        <div className="border-t border-[#E8E8ED]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <StatCard value={`${totalTools}+`} label="AI工具" icon={Cpu} color="green" />
-              <StatCard value={`${totalOpensource}+`} label="开源项目" icon={Terminal} color="cyan" />
-              <StatCard value={`${totalCategories}+`} label="工具分类" icon={Globe} color="magenta" />
-              <StatCard value="每日" label="自动更新" icon={Radio} color="yellow" />
+              <StatCard value={`${totalTools}+`} label="AI Tools" icon={Cpu} color="green" />
+              <StatCard value={`${totalOpensource}+`} label="Open Source" icon={Terminal} color="cyan" />
+              <StatCard value={`${totalCategories}+`} label="Categories" icon={Globe} color="magenta" />
+              <StatCard value="Daily" label="Auto Updated" icon={Radio} color="yellow" />
             </div>
           </div>
         </div>
@@ -273,16 +250,16 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-orbitron font-bold text-cyber-foreground uppercase tracking-wider">
-                <span className="text-neon-green">{'>'}</span> 热门工具
+              <h2 className="text-2xl font-sans font-bold text-[#1A1A2E]">
+                Featured Tools
               </h2>
-              <p className="text-cyber-muted-foreground mt-1 font-mono text-sm">本周最受欢迎的AI工具</p>
+              <p className="text-[#5F5E5A] mt-1 font-sans text-sm">Most popular AI coding tools this week</p>
             </div>
             <Link
               href="/tools"
               className="btn-cyber-outline text-xs py-2 px-4"
             >
-              查看全部
+              View All
               <ArrowRight className="w-4 h-4 inline ml-1" />
             </Link>
           </div>
@@ -296,10 +273,10 @@ export default async function HomePage() {
 
       {/* Categories */}
       <section id="categories-section" className="py-16 relative">
-        <div className="absolute inset-0 bg-cyber-muted/10" />
+        <div className="absolute inset-0 bg-[#F7F8FA]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <h2 className="text-2xl font-orbitron font-bold text-cyber-foreground uppercase tracking-wider text-center mb-12">
-            <span className="text-neon-cyan">{'>'}</span> 探索AI工具分类
+          <h2 className="text-2xl font-sans font-bold text-[#1A1A2E] text-center mb-12">
+            Explore Categories
           </h2>
           <CategoryGridClient categories={categoryCards} />
         </div>
@@ -310,19 +287,18 @@ export default async function HomePage() {
         <section className="py-8 relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-4 mb-4">
-              <span className="text-xs font-orbitron font-bold text-neon-cyan uppercase tracking-wider">🏷️ 热门话题</span>
-              <div className="flex-1 h-px bg-gradient-to-r from-neon-cyan/50 to-transparent" />
+              <span className="text-xs font-sans font-bold text-[#378ADD] uppercase tracking-wider">🏷️ Hot Topics</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-[#378ADD]/50 to-transparent" />
             </div>
             <div className="flex flex-wrap gap-2">
               {hotTags.map(([tag, count]) => (
                 <Link
                   key={tag}
                   href={`/user-share?search=${encodeURIComponent(tag)}`}
-                  className="group inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono border border-cyber-border bg-cyber-card hover:border-neon-cyan/50 hover:text-neon-cyan hover:bg-neon-cyan/5 transition-all duration-200"
-                  style={{ clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))' }}
+                  className="group inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-sans border border-[#E8E8ED] bg-white rounded-md hover:border-[#378ADD]/50 hover:text-[#378ADD] hover:bg-[#E6F1FB] transition-all duration-200"
                 >
                   <span>#{tag}</span>
-                  <span className="text-[10px] text-cyber-muted-foreground/50 group-hover:text-neon-cyan/50">{count}</span>
+                  <span className="text-[10px] text-[#888780] group-hover:text-[#378ADD]/70">{count}</span>
                 </Link>
               ))}
             </div>
@@ -335,16 +311,16 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-orbitron font-bold text-cyber-foreground uppercase tracking-wider">
-                <span className="text-neon-magenta">{'>'}</span> 用户分享
+              <h2 className="text-2xl font-sans font-bold text-[#1A1A2E]">
+                Community Shares
               </h2>
-              <p className="text-cyber-muted-foreground mt-1 font-mono text-sm">工具分享、技术交流、社区问答，最新社区动态</p>
+              <p className="text-[#5F5E5A] mt-1 font-sans text-sm">Tool sharing, tech discussions, and community Q&amp;A</p>
             </div>
             <Link
               href="/user-share"
               className="btn-cyber-outline text-xs py-2 px-4"
             >
-              查看更多
+              View More
               <ArrowRight className="w-4 h-4 inline ml-1" />
             </Link>
           </div>
@@ -476,20 +452,20 @@ export default async function HomePage() {
 
       {/* Latest News */}
       <section className="py-16 relative">
-        <div className="absolute inset-0 bg-cyber-muted/10" />
+        <div className="absolute inset-0 bg-[#F7F8FA]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-orbitron font-bold text-cyber-foreground uppercase tracking-wider">
-                <span className="text-neon-cyan">{'>'}</span> AI资讯
+              <h2 className="text-2xl font-sans font-bold text-[#1A1A2E]">
+                AI News
               </h2>
-              <p className="text-cyber-muted-foreground mt-1 font-mono text-sm">全球AI行业最新动态</p>
+              <p className="text-[#5F5E5A] mt-1 font-sans text-sm">Latest updates from the AI industry</p>
             </div>
             <Link
               href="/news"
               className="btn-cyber-outline text-xs py-2 px-4"
             >
-              更多资讯
+              More News
               <ArrowRight className="w-4 h-4 inline ml-1" />
             </Link>
           </div>
@@ -500,25 +476,25 @@ export default async function HomePage() {
                 href={`/news/${news.id}`}
                 className="card-cyber p-6"
               >
-                <div className="text-sm text-cyber-muted-foreground mb-2 font-mono">
-                  {news.sourceName} · {new Date(news.publishedAt || news.createdAt).toLocaleDateString('zh-CN')}
+                <div className="text-sm text-[#888780] mb-2 font-sans">
+                  {news.sourceName} · {new Date(news.publishedAt || news.createdAt).toLocaleDateString('en-US')}
                 </div>
-                <h3 className="font-orbitron font-bold text-cyber-foreground mb-1 line-clamp-2 group-hover:text-neon-green transition-colors">
+                <h3 className="font-sans font-bold text-[#1A1A2E] mb-1 line-clamp-2 group-hover:text-[#185FA5] transition-colors">
                   {news.title}
                 </h3>
                 {(news as any).titleZh && (
-                  <h4 className="text-sm text-neon-cyan/80 mb-2 line-clamp-2 font-medium">
+                  <h4 className="text-sm text-[#378ADD] mb-2 line-clamp-2 font-medium">
                     {(news as any).titleZh}
                   </h4>
                 )}
-                <p className="text-sm text-cyber-muted-foreground line-clamp-2 font-mono">
+                <p className="text-sm text-[#5F5E5A] line-clamp-2 font-sans">
                   {news.summary}
                 </p>
               </Link>
             )) : (
               <div className="col-span-3 text-center py-12">
-                <Terminal className="w-12 h-12 text-cyber-muted-foreground mx-auto mb-4" />
-                <p className="text-cyber-muted-foreground font-mono">资讯模块开发中...</p>
+                <Terminal className="w-12 h-12 text-[#888780] mx-auto mb-4" />
+                <p className="text-[#5F5E5A] font-sans">News module is loading...</p>
               </div>
             )}
           </div>
@@ -527,18 +503,14 @@ export default async function HomePage() {
 
       {/* CTA */}
       <section className="py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-neon-green/5 via-cyber-muted/10 to-neon-magenta/5" />
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px), linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }} />
-        
+        <div className="absolute inset-0 bg-gradient-to-r from-[#E6F1FB] via-white to-[#EEEDFE]" />
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <h2 className="text-3xl md:text-4xl font-orbitron font-black text-cyber-foreground uppercase tracking-wider mb-4">
-            发现更多<span className="text-neon-green">AI工具</span>
+          <h2 className="text-3xl md:text-4xl font-sans font-extrabold text-[#1A1A2E] mb-4">
+            Discover More <span className="text-[#185FA5]">AI Tools</span>
           </h2>
-          <p className="text-cyber-muted-foreground mb-8 font-mono">
-            提交你的AI产品，或分享你的使用体验
+          <p className="text-[#5F5E5A] mb-8 font-sans">
+            Submit your AI product, or share your experience with the community
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -546,14 +518,14 @@ export default async function HomePage() {
               className="btn-cyber-glow inline-flex items-center justify-center gap-2 px-8 py-4"
             >
               <Zap className="w-5 h-5" />
-              提交工具
+              Submit Tool
             </Link>
             <Link
               href="/user-share"
               className="btn-cyber-glow-magenta inline-flex items-center justify-center gap-2 px-8 py-4"
             >
               <MessageCircle className="w-5 h-5" />
-              去分享
+              Share
             </Link>
           </div>
         </div>

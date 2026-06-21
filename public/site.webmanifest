@@ -1,11 +1,11 @@
 {
-  "name": "AI Hub - 全球AI工具聚合平台",
-  "short_name": "AI Hub",
-  "description": "收录海量AI工具与最新AI资讯，每日更新",
+  "name": "AI Wizard Tool - Discover & Compare AI Coding Tools",
+  "short_name": "AI Wizard Tool",
+  "description": "Find the best AI coding tools, compare features and prices. Built for vibe coding workflows.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0f",
-  "theme_color": "#0a0a0f",
+  "background_color": "#FFFFFF",
+  "theme_color": "#185FA5",
   "icons": [
     {
       "src": "/apple-touch-icon.png",

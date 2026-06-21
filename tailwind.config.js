@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Cyberpunk Design System Colors - Dark Mode (Default)
+        // Business Blue-White Design System - Light Mode (Default)
+        // 保留 cyber-* 命名以兼容现有组件，但实际颜色已替换为蓝白风格
         cyber: {
           background: 'var(--cyber-background)',
           foreground: 'var(--cyber-foreground)',
@@ -20,113 +21,130 @@ module.exports = {
           ring: 'var(--cyber-ring)',
           destructive: 'var(--cyber-destructive)',
         },
-        // Neon accent colors
+        // 品牌色 token - 保留 neon-* 命名以兼容现有组件
+        // 实际映射：green→主色蓝, cyan→主色中蓝, magenta→紫色强调, yellow→警告色, red→危险色
         neon: {
-          green: '#00ff88',
-          magenta: '#ff00ff',
-          cyan: '#00d4ff',
-          yellow: '#ffff00',
-          red: '#ff3366',
+          green: '#185FA5',   // Primary 哥飞蓝
+          magenta: '#534AB7', // Accent 紫色（用于对比页）
+          cyan: '#378ADD',    // Primary 中
+          yellow: '#BA7517',  // Warning 警告色
+          red: '#D85A30',     // Danger 危险色
+        },
+        // 商业配色扩展 token
+        brand: {
+          primary: '#185FA5',
+          'primary-light': '#E6F1FB',
+          'primary-mid': '#378ADD',
+          accent: '#534AB7',
+          'accent-light': '#EEEDFE',
+          success: '#0F6E56',
+          'success-light': '#E1F5EE',
+          warning: '#BA7517',
+          'warning-light': '#FAEEDA',
+          danger: '#D85A30',
+          'danger-light': '#FAECE7',
+          'bg-secondary': '#F7F8FA',
+          'text-strong': '#1A1A2E',
+          'text-muted': '#5F5E5A',
+          'text-weak': '#888780',
         },
         // Legacy primary (keep for compatibility)
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          900: '#1e3a8a',
+          50: '#E6F1FB',
+          100: '#c8e0f5',
+          500: '#378ADD',
+          600: '#185FA5',
+          700: '#134a82',
+          900: '#0d3155',
         },
       },
       fontFamily: {
-        orbitron: ['Orbitron', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
-        tech: ['Share Tech Mono', 'monospace'],
+        // 改用系统字体栈，去掉赛博朋克字体
+        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        // 保留 orbitron/tech token 名以兼容，但实际指向系统字体
+        orbitron: ['system-ui', '-apple-system', 'sans-serif'],
+        tech: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       boxShadow: {
-        // Neon glow effects
-        'neon': '0 0 5px #00ff88, 0 0 10px #00ff8840',
-        'neon-sm': '0 0 3px #00ff88, 0 0 6px #00ff8830',
-        'neon-lg': '0 0 10px #00ff88, 0 0 20px #00ff8860, 0 0 40px #00ff8830',
-        'neon-secondary': '0 0 5px #ff00ff, 0 0 20px #ff00ff60',
-        'neon-tertiary': '0 0 5px #00d4ff, 0 0 20px #00d4ff60',
-        'neon-red': '0 0 5px #ff3366, 0 0 20px #ff336660',
-        'neon-yellow': '0 0 5px #ffff00, 0 0 10px #ffff0040',
+        // 替换霓虹发光为柔和商业阴影
+        'neon': '0 1px 3px rgba(24, 95, 165, 0.08), 0 1px 2px rgba(24, 95, 165, 0.04)',
+        'neon-sm': '0 1px 2px rgba(24, 95, 165, 0.06)',
+        'neon-lg': '0 4px 12px rgba(24, 95, 165, 0.10), 0 2px 4px rgba(24, 95, 165, 0.06)',
+        'neon-secondary': '0 1px 3px rgba(83, 74, 183, 0.10), 0 1px 2px rgba(83, 74, 183, 0.06)',
+        'neon-tertiary': '0 1px 3px rgba(55, 138, 221, 0.10), 0 1px 2px rgba(55, 138, 221, 0.06)',
+        'neon-red': '0 1px 3px rgba(216, 90, 48, 0.10), 0 1px 2px rgba(216, 90, 48, 0.06)',
+        'neon-yellow': '0 1px 3px rgba(186, 117, 23, 0.10), 0 1px 2px rgba(186, 117, 23, 0.06)',
+        // 卡片悬停阴影
+        'card': '0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02)',
+        'card-hover': '0 4px 16px rgba(24, 95, 165, 0.10), 0 2px 6px rgba(0, 0, 0, 0.04)',
       },
       textShadow: {
-        'neon': '0 0 10px rgba(0, 255, 136, 0.5)',
-        'neon-lg': '0 0 20px rgba(0, 255, 136, 0.3)',
-        'glitch': '-2px 0 #ff00ff, 2px 0 #00d4ff',
+        // 移除霓虹和 glitch 文字阴影
+        'neon': 'none',
+        'neon-lg': 'none',
+        'glitch': 'none',
       },
       animation: {
         'blink': 'blink 1s step-end infinite',
-        'glitch': 'glitch 0.3s ease-in-out infinite',
-        'scanline': 'scanline 8s linear infinite',
-        'rgb-shift': 'rgbShift 2s ease-in-out infinite',
-        'pulse-neon': 'pulseNeon 2s ease-in-out infinite',
-        'flicker': 'flicker 3s linear infinite',
+        // 保留类名但移除动画效果（避免破坏现有 className）
+        'glitch': 'none',
+        'scanline': 'none',
+        'rgb-shift': 'none',
+        'pulse-neon': 'none',
+        'flicker': 'none',
       },
       keyframes: {
         blink: {
           '50%': { opacity: '0' },
         },
-        glitch: {
-          '0%, 100%': { transform: 'translate(0)' },
-          '20%': { transform: 'translate(-2px, 2px)' },
-          '40%': { transform: 'translate(2px, -2px)' },
-          '60%': { transform: 'translate(-1px, -1px)' },
-          '80%': { transform: 'translate(1px, 1px)' },
-        },
-        scanline: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100vh)' },
-        },
-        rgbShift: {
-          '0%, 100%': { textShadow: '-2px 0 #ff00ff, 2px 0 #00d4ff' },
-          '50%': { textShadow: '2px 0 #ff00ff, -2px 0 #00d4ff' },
-        },
-        pulseNeon: {
-          '0%, 100%': { boxShadow: '0 0 5px #00ff88, 0 0 10px #00ff8840' },
-          '50%': { boxShadow: '0 0 10px #00ff88, 0 0 20px #00ff8860, 0 0 40px #00ff8830' },
-        },
-        flicker: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.95' },
-          '52%': { opacity: '0.5' },
-          '54%': { opacity: '0.95' },
-          '90%': { opacity: '0.9' },
-          '92%': { opacity: '0.5' },
-          '94%': { opacity: '0.9' },
-        },
+        // 保留空 keyframes 以避免构建错误
+        glitch: {},
+        scanline: {},
+        rgbShift: {},
+        pulseNeon: {},
+        flicker: {},
       },
+      // 移除 clip-path 切角效果（保留空对象以避免破坏引用）
       clipPath: {
-        'chamfer': 'polygon(0 10px, 10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px))',
-        'chamfer-sm': 'polygon(0 6px, 6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px))',
-        'chamfer-lg': 'polygon(0 16px, 16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px))',
+        'chamfer': 'none',
+        'chamfer-sm': 'none',
+        'chamfer-lg': 'none',
+      },
+      borderRadius: {
+        '4px': '4px',
+        '6px': '6px',
+        '8px': '8px',
+        '12px': '12px',
       },
     },
   },
   plugins: [
-    // Custom plugin for clip-path utilities
+    // 把霓虹工具类替换为商业风格的无效果版本
     function({ addUtilities }) {
       addUtilities({
+        // clip-chamfer 不再切角，改用圆角
         '.clip-chamfer': {
-          clipPath: 'polygon(0 10px, 10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px))',
+          borderRadius: '6px',
+          clipPath: 'none',
         },
         '.clip-chamfer-sm': {
-          clipPath: 'polygon(0 6px, 6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px))',
+          borderRadius: '4px',
+          clipPath: 'none',
         },
         '.clip-chamfer-lg': {
-          clipPath: 'polygon(0 16px, 16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px))',
+          borderRadius: '12px',
+          clipPath: 'none',
         },
+        // 移除霓虹文字阴影
         '.text-shadow-neon': {
-          textShadow: '0 0 10px rgba(0, 255, 136, 0.5)',
+          textShadow: 'none',
         },
         '.text-shadow-neon-lg': {
-          textShadow: '0 0 20px rgba(0, 255, 136, 0.3)',
+          textShadow: 'none',
         },
         '.text-shadow-glitch': {
-          textShadow: '-2px 0 #ff00ff, 2px 0 #00d4ff',
+          textShadow: 'none',
         },
       })
     },

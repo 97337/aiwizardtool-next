@@ -46,26 +46,15 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4 group">
-              <div className="relative">
-                <BrainCircuit className="w-6 h-6 text-neon-green" />
-                {/* Glitch effect layers */}
-                <div className="absolute inset-0 w-6 h-6 text-neon-magenta opacity-0 group-hover:opacity-70 group-hover:translate-x-[1px] transition-all duration-100">
-                  <BrainCircuit className="w-6 h-6" />
-                </div>
-                <div className="absolute inset-0 w-6 h-6 text-neon-cyan opacity-0 group-hover:opacity-70 group-hover:-translate-x-[1px] transition-all duration-100">
-                  <BrainCircuit className="w-6 h-6" />
-                </div>
+              <div className="w-8 h-8 rounded-md bg-[#185FA5] flex items-center justify-center text-white font-bold text-sm">
+                AI
               </div>
-              <span className="text-lg font-orbitron font-black text-cyber-foreground tracking-wider">
-                <span className="text-neon-green">AI</span>
-                <span className="relative">
-                  HUB
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-neon-green via-neon-cyan to-neon-magenta" />
-                </span>
+              <span className="text-lg font-sans font-bold text-[#1A1A2E] tracking-tight">
+                AI Wizard Tool
               </span>
             </Link>
-            <p className="text-sm text-cyber-muted-foreground font-mono">
-              发现全球最新最热的AI工具、开源项目和AI资讯
+            <p className="text-sm text-cyber-muted-foreground font-sans">
+              Find the best AI coding tools, compare features and prices. Built for vibe coding workflows.
             </p>
           </div>
 
@@ -164,7 +153,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center justify-center gap-2 text-sm text-cyber-muted-foreground font-mono">
             <Radio className="w-4 h-4 text-neon-green animate-pulse" />
-            <span>© 2026 AI Hub. All rights reserved.</span>
+            <span>© 2026 AI Wizard Tool. All rights reserved.</span>
           </div>
         </div>
       </div>
