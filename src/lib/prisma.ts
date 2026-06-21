@@ -1,5 +1,8 @@
-// ⚠️ DATABASE DISABLED — Supabase connection failing in Vercel
-// Using static mock data instead. To re-enable, replace this file with:
-//   import { PrismaClient } from '@prisma/client'
-//   export const prisma = new PrismaClient({ ... })
-export { mockPrisma as prisma } from './mock-prisma'
+import { PrismaClient } from '@prisma/client'
+
+// Neon serverless PostgreSQL — works natively with Vercel, no pooler needed
+const globalForPrisma = globalThis as unknown as { prisma: PrismaClient }
+
+export const prisma = globalForPrisma.prisma || new PrismaClient()
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
