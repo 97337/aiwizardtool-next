@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { verifyAdmin } from '@/lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 // PATCH /api/admin/users/[id] - 封禁/解封用户
 export async function PATCH(
   request: NextRequest,

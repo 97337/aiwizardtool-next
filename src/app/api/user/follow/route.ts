@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { createNotification } from '@/lib/notification'
 
+export const dynamic = 'force-dynamic'
+
 // POST /api/user/follow - 关注/取消关注
 export async function POST(request: NextRequest) {
   try {

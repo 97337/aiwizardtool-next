@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { getImageCacheKey, getCachedImage, setCachedImage } from '@/lib/image-cache'
 import { isR2Image } from '@/lib/r2'
 
+export const dynamic = 'force-dynamic'
+
 // 将 Buffer 转为标准 Uint8Array
 function imageResponse(buffer: Buffer, mimeType: string, isHit: boolean): Response {
   return new Response(new Blob([Uint8Array.from(buffer)]), {

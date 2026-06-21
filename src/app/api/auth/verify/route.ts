@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/auth/verify?userId=xxx&token=xxx - 校验 sessionToken 是否有效
 export async function GET(request: NextRequest) {
   try {

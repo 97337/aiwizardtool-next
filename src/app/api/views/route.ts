@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 // 记录浏览（防刷量：同一用户/IP 24小时内只计一次）
 export async function POST(request: NextRequest) {
   try {

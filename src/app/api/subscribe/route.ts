@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
+
+export const dynamic = 'force-dynamic'
 // 动态导入确保获取最新的 Prisma Client
 let prisma: any
 try {

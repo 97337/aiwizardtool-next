@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { verifyAdmin } from '@/lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 // DELETE /api/admin/shares/[id] 删除分享
 export async function DELETE(
   request: NextRequest,

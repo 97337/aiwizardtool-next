@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { generateCode, saveVerificationCode, sendVerificationCode } from '@/lib/email'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 // 频率限制：记录每个邮箱的最近发送时间
 const sendCooldowns = new Map<string, number>()
 const COOLDOWN_MS = 60 * 1000 // 60秒冷却

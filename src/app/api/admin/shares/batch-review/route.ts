@@ -6,6 +6,8 @@ import { addExp } from '@/lib/add-exp'
 import { EXP_RULES } from '@/lib/level'
 import { checkAndUnlock } from '@/lib/check-achievements'
 
+export const dynamic = 'force-dynamic'
+
 // POST /api/admin/shares/batch-review  批量审核分享
 export async function POST(request: NextRequest) {
   const auth = await verifyAdmin(request)

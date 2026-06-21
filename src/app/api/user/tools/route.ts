@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/user/tools?userId=xxx - 获取指定用户提交的工具列表（从 shares 表查）
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)

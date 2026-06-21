@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { markAsRead } from '@/lib/notification'
 
+export const dynamic = 'force-dynamic'
+
 // POST /api/notifications/read - 标记单条通知为已读
 export async function POST(request: NextRequest) {
   try {

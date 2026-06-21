@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { markAllAsRead } from '@/lib/notification'
 
+export const dynamic = 'force-dynamic'
+
 // POST /api/notifications/read-all - 全部标记已读
 export async function POST(request: NextRequest) {
   try {

@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { createNotification } from '@/lib/notification'
 
+export const dynamic = 'force-dynamic'
+
 // PATCH /api/reports/[id] - 处理举报
 export async function PATCH(
   request: NextRequest,

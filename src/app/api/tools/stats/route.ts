@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/tools/stats?toolId=xxx - 获取工具实时统计数据
 export async function GET(request: NextRequest) {
   try {

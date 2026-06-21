@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/user/shares?userId=xxx - 获取指定用户的分享列表
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)

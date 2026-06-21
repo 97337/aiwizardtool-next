@@ -4,6 +4,8 @@ import bcrypt from 'bcryptjs'
 import crypto from 'crypto'
 import { verifyCode } from '@/lib/email'
 
+export const dynamic = 'force-dynamic'
+
 // 写入验证码日志
 async function logVerification(params: {
   email: string

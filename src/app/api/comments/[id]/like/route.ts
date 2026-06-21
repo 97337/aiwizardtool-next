@@ -6,6 +6,8 @@ import { addExp } from '@/lib/add-exp'
 import { EXP_RULES } from '@/lib/level'
 import { checkAndUnlock } from '@/lib/check-achievements'
 
+export const dynamic = 'force-dynamic'
+
 // POST /api/comments/[id]/like - 点赞/取消点赞评论
 export async function POST(
   request: NextRequest,

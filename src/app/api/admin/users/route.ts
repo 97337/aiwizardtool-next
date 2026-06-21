@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { verifyAdmin } from '@/lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/admin/users - 获取用户列表
 export async function GET(request: NextRequest) {
   // 鉴权

@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import crypto from 'crypto'
 
+export const dynamic = 'force-dynamic'
+
 // POST /api/auth/refresh-token - 获取或生成 sessionToken
 export async function POST(request: NextRequest) {
   try {

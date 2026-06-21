@@ -6,6 +6,8 @@ import { addExp } from '@/lib/add-exp'
 import { EXP_RULES } from '@/lib/level'
 import sanitizeHtml from 'sanitize-html'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/tools/[id]/comments - 获取工具的评论列表
 export async function GET(
   request: NextRequest,

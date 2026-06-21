@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { deleteNotification } from '@/lib/notification'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
   try {
     const { notificationId, userId } = await request.json()

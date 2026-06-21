@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { createNotification } from '@/lib/notification'
 import { uploadImage, parseBase64Image, isR2Configured } from '@/lib/r2'
 
+export const dynamic = 'force-dynamic'
+
 // CORS 头 + 缓存控制（5分钟CDN缓存，降低Supabase带宽消耗）
 const CORS = { 
   'Access-Control-Allow-Origin': '*', 

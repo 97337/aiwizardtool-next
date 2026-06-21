@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { getLevelByExp, EXP_RULES } from '@/lib/level'
 import { checkAndUnlock } from '@/lib/check-achievements'
 
+export const dynamic = 'force-dynamic'
+
 // POST /api/user/sign-in
 export async function POST(request: NextRequest) {
   try {

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/user/profile/[id] - 获取用户公开资料（根据隐私设置过滤）
 export async function GET(
   request: NextRequest,

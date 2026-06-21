@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { verifyAdmin } from '@/lib/auth'
 import { createNotification } from '@/lib/notification'
 
+export const dynamic = 'force-dynamic'
+
 // POST /api/admin/tools/[id]/review
 export async function POST(
   request: NextRequest,

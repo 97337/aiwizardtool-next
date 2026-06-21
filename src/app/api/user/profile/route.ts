@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 // PUT /api/user/profile - 更新用户资料
 export async function PUT(request: NextRequest) {
   try {

@@ -6,6 +6,8 @@ import { addExp } from '@/lib/add-exp'
 import { EXP_RULES } from '@/lib/level'
 import { checkAndUnlock } from '@/lib/check-achievements'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/user/likes?userId=xxx
 export async function GET(request: NextRequest) {
   try {

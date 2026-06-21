@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/search/external?q=搜索词
 // 代理 Wikipedia API（免费、无限制、境内可访问、百科结果）
 export async function GET(request: NextRequest) {

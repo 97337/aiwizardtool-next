@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { uploadImage, parseBase64Image, isR2Configured } from '@/lib/r2'
 import sanitizeHtml from 'sanitize-html'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/shares?type=tool|life|tech_share|qa_help&toolId=&sort=new|hot&page=1&limit=10&search=
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)

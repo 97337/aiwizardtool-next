@@ -3,6 +3,8 @@ import './globals.css'
 import BackToTop from '@/components/BackToTop'
 import { ExpToastProvider } from '@/components/ExpToast'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'AI Wizard Tool - Discover & Compare AI Coding Tools',
   description: 'AI Wizard Tool helps you find the best AI coding tools, compare features, prices, and choose the right one for your vibe coding workflow. Browse MCP servers, AI code assistants, and more.',

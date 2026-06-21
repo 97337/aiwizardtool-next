@@ -6,6 +6,8 @@ import { EXP_RULES } from '@/lib/level'
 import { checkAndUnlock } from '@/lib/check-achievements'
 import { createNotification } from '@/lib/notification'
 
+export const dynamic = 'force-dynamic'
+
 // POST /api/admin/shares/[id]/review  审核分享/下架/恢复
 export async function POST(
   request: NextRequest,

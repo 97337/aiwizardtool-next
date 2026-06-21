@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { generateAIReply, shouldAIReply, shouldAILike } from '@/lib/ai-service'
 
+export const dynamic = 'force-dynamic'
+
 /**
  * POST /api/ai/interact
  * AI 自动互动接口 - 点赞 + 智能回复

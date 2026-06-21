@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { verifyAdmin } from '@/lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 // 允许的 status/source 白名单（防止 SQL 注入枚举）
 const ALLOWED_STATUS = ['pending', 'approved', 'rejected', 'suspended']
 const ALLOWED_SOURCE = ['crawler', 'user']

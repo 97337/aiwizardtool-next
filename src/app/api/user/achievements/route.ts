@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { ALL_ACHIEVEMENTS } from '@/lib/achievements'
 import { checkAndUnlock } from '@/lib/check-achievements'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/user/achievements?userId=X
 export async function GET(request: NextRequest) {
   const userId = request.nextUrl.searchParams.get('userId')

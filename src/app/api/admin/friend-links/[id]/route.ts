@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { verifyAdmin } from '@/lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 // PUT /api/admin/friend-links/[id] - 更新友情链接
 export async function PUT(
   request: NextRequest,

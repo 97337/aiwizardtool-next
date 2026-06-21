@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/search/external/article?id=12345
 // 获取 Wikipedia 文章全文（通过 Vercel 代理，解决被墙问题）
 export async function GET(request: NextRequest) {

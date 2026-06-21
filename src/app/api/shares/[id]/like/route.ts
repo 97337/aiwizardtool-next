@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { canLike, incrementLikeCount } from '@/lib/daily-limit'
 import { createNotification } from '@/lib/notification'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/shares/[id]/like  获取当前点赞数
 export async function GET(
   request: NextRequest,

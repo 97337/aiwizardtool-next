@@ -1,10 +1,12 @@
 import { MetadataRoute } from 'next'
 import { PrismaClient } from '@prisma/client'
 
+export const dynamic = 'force-dynamic'
+
 const prisma = new PrismaClient()
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://ai999999.top'
+  const baseUrl = 'https://aiwizardtool.com'
 
   // 获取所有已批准的工具
   const tools = await prisma.tool.findMany({

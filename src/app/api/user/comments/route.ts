@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/user/comments?userId=1&page=1&limit=20
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)

@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { verifyAdmin } from '@/lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 // 将 BigInt 转为 Number 的工具函数
 function serialize(obj: any): any {
   if (obj === null || obj === undefined) return obj
