@@ -14,7 +14,7 @@ const SECURITY_HEADERS: Record<string, string> = {
 
 // CORS 头（限制为本站域名，阻止外部网站跨域调用）
 const CORS_HEADERS: Record<string, string> = {
-  'Access-Control-Allow-Origin': 'https://ai999999.top',
+  'Access-Control-Allow-Origin': 'https://aiwizardtool.com',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 }
